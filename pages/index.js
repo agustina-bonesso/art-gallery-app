@@ -4,6 +4,11 @@ import useSWR from "swr";
 const URL = "https://example-apis.vercel.app/api/art";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
+function randomArtPiece(pieces) {
+  const randomIndex = Math.floor(Math.random() * pieces.length);
+  return pieces[randomIndex];
+}
+
 export default function HomePage() {
   const { data, error, isLoading } = useSWR(URL, fetcher);
   console.log(data);
@@ -16,4 +21,3 @@ export default function HomePage() {
 
   return <ArtPieces pieces={data}></ArtPieces>;
 }
-
