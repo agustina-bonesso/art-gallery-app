@@ -1,23 +1,22 @@
 import Image from "next/image";
 import styled from "styled-components";
-import Link from "next/link";
 
-export default function ArtPiecePreview({ image, artist, title, slug }) {
+export default function ArtPieceDetails({ image, title, artist, year, genre }) {
   return (
     <StyledSection>
-      <Link href={`/art-pieces/${slug}`}>
-        <StyledImage
-          src={image}
-          alt={title}
-          width={500}
-          height={500}
-          priority={true}
-        ></StyledImage>
-      </Link>
-
+      <StyledImage
+        src={image}
+        alt={title}
+        width={500}
+        height={500}
+        priority={true}
+      ></StyledImage>
       <StyledDescription>
         <h3>{title}</h3>
-        <p>Artist: {artist}</p>
+        <p>
+          Artist: {artist} <br /> Years: {year}
+          <br /> Genre: {genre}
+        </p>
       </StyledDescription>
     </StyledSection>
   );
