@@ -2,10 +2,6 @@ import ArtPiecePreview from "../ArtPiecePreview";
 import styled from "styled-components";
 
 export default function ArtPieces({ pieces }) {
-  const StyledList = styled.ul`
-    list-style-type: none;
-  `;
-
   return (
     <>
       <StyledList>
@@ -17,6 +13,7 @@ export default function ArtPieces({ pieces }) {
                 title={piece.name}
                 artist={piece.artist}
               ></ArtPiecePreview>
+              <hr />
             </li>
           );
         })}
@@ -24,3 +21,7 @@ export default function ArtPieces({ pieces }) {
     </>
   );
 }
+
+const StyledList = styled.ul`
+  list-style-type: none;
+`;

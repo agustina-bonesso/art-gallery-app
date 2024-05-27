@@ -1,5 +1,3 @@
-import ArtPieces from "@/components/ArtPieces";
-import Link from "next/link";
 import Spotlight from "@/components/Spotlight";
 
 function randomArtPiece(pieces) {
@@ -7,14 +5,17 @@ function randomArtPiece(pieces) {
   return pieces[randomIndex];
 }
 
-export default function HomePage({ pieces }) {
+export default function SpotlightPage({ pieces }) {
   const randomPiece = randomArtPiece(pieces);
 
   return (
     <>
       <h1>Spotlight</h1>
-      <Spotlight image={randomPiece.imageSource} artist={randomPiece.artist} />
-      <Link href="/art-pieces">All Piece Gallery</Link>
+      <Spotlight
+        image={randomPiece.imageSource}
+        artist={randomPiece.artist}
+        title={randomPiece.name}
+      />
     </>
   );
 }
