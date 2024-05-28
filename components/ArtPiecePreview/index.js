@@ -2,6 +2,7 @@ import Image from "next/image";
 import styled from "styled-components";
 import Link from "next/link";
 import FavouriteButton from "../FavouriteButton";
+import { useState } from "react";
 
 export default function ArtPiecePreview({
   image,
@@ -11,9 +12,11 @@ export default function ArtPiecePreview({
   onToggleFavourite,
   artPiecesInfo,
 }) {
-  const isFavourite = artPiecesInfo
-    .filter((pieceFav) => pieceFav.slug === slug)
-    .map((piece) => piece.isFavourite);
+  
+  const isFavourite = artPiecesInfo.find(
+    (piece) => piece.slug === slug
+  )?.isFavourite;
+
   return (
     <StyledSection>
       <FavouriteButton
@@ -29,7 +32,6 @@ export default function ArtPiecePreview({
           height={500}
           priority={true}
         ></StyledImage>
-        <p>{isFavourite}</p>
       </Link>
 
       <StyledDescription>
