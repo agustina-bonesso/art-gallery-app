@@ -7,6 +7,7 @@ export default function Navigation() {
       <StyledNavLinks>
         <Link href="/">Spotlight</Link>
         <Link href="/art-pieces">Pieces</Link>
+        <Link href="/favourites">Favourites</Link>
       </StyledNavLinks>
     </StyledNav>
   );
