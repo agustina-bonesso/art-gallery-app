@@ -3,10 +3,24 @@ import styled from "styled-components";
 import Link from "next/link";
 import FavouriteButton from "../FavouriteButton";
 
-export default function ArtPiecePreview({ image, artist, title, slug, onToggleFavourite }) {
+export default function ArtPiecePreview({
+  image,
+  artist,
+  title,
+  slug,
+  onToggleFavourite,
+  artPiecesInfo,
+}) {
+  const isFavourite = artPiecesInfo
+    .filter((pieceFav) => pieceFav.slug === slug)
+    .map((piece) => piece.isFavourite);
   return (
     <StyledSection>
-      <FavouriteButton onToggleFavourite={onToggleFavourite} slug={slug}/>
+      <FavouriteButton
+        onToggleFavourite={onToggleFavourite}
+        slug={slug}
+        isFavourite={isFavourite}
+      />
       <Link href={`/art-pieces/${slug}`}>
         <StyledImage
           src={image}
@@ -15,6 +29,7 @@ export default function ArtPiecePreview({ image, artist, title, slug, onToggleFa
           height={500}
           priority={true}
         ></StyledImage>
+        <p>{isFavourite}</p>
       </Link>
 
       <StyledDescription>
