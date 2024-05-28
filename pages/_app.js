@@ -21,22 +21,21 @@ export default function App({ Component, pageProps }) {
     const isSaved = artPiecesInfo.find((piece) => piece.slug === slug);
 
     if (isSaved) {
+      //setArtPiecesInfo(artPiecesInfo.filter((piece) => piece != slug))
       const setUpPiece = artPiecesInfo.map((piece) => {
         if (piece.slug !== slug) {
           return piece;
         }
         return { ...piece, isFavourite: !piece.isFavourite };
       });
+      //setArtPiecesInfo(...slug);
       setArtPiecesInfo(setUpPiece);
     } else {
       const newPiece = { slug: slug, isFavourite: true };
       setArtPiecesInfo([newPiece, ...artPiecesInfo]);
     }
-    logArtPiecesInfo();
   }
-  function logArtPiecesInfo() {
-    console.log(artPiecesInfo);
-  }
+ 
 
   return (
     <>

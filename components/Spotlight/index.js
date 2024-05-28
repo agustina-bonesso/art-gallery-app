@@ -2,10 +2,14 @@ import Image from "next/image";
 import styled from "styled-components";
 import FavouriteButton from "../FavouriteButton";
 
-export default function Spotlight({ slug, image, artist, title, onToggleFavourite }) {
+export default function Spotlight({ slug, image, artist, title, onToggleFavourite, artPiecesInfo }) {
+  const isFavourite = artPiecesInfo.find(
+    (piece) => piece.slug === slug
+  )?.isFavourite;
+
   return (
     <SpotlightSection>
-      <FavouriteButton onToggleFavourite={onToggleFavourite} slug={slug} />
+      <FavouriteButton onToggleFavourite={onToggleFavourite} slug={slug} isFavourite={isFavourite}/>
       <StyledImage
         src={image}
         alt={title}

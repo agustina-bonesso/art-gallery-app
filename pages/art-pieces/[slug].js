@@ -2,7 +2,11 @@ import ArtPieceDetails from "@/components/ArtPieceDetails";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-export default function PieceDetail({ pieces, onToggleFavourite }) {
+export default function PieceDetail({
+  pieces,
+  onToggleFavourite,
+  artPiecesInfo,
+}) {
   const router = useRouter();
   const { slug } = router.query;
 
@@ -22,6 +26,7 @@ export default function PieceDetail({ pieces, onToggleFavourite }) {
         genre={piece.genre}
         slug={piece.slug}
         onToggleFavourite={onToggleFavourite}
+        artPiecesInfo={artPiecesInfo}
       />
       <Link href="/art-pieces">Back to all pieces</Link>
     </>

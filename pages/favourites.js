@@ -21,6 +21,6 @@ export default function FavouritePage({
   console.log(favPiecesInfo);
 
   return (
-    <ArtPieces pieces={favPiecesInfo} onToggleFavourite={onToggleFavourite} />
+    <ArtPieces pieces={favPiecesInfo} onToggleFavourite={onToggleFavourite} artPiecesInfo={artPiecesInfo}/>
   );
 }
