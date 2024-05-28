@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styled from "styled-components";
 import FavouriteButton from "../FavouriteButton";
+import CommentForm from "../CommentForm";
 
 export default function ArtPieceDetails({
   slug,
@@ -11,14 +12,21 @@ export default function ArtPieceDetails({
   genre,
   onToggleFavourite,
   artPiecesInfo,
+  onSubmitComment,
 }) {
   const isFavourite = artPiecesInfo.find(
     (piece) => piece.slug === slug
   )?.isFavourite;
 
+  const comments = artPiecesInfo.find((piece) => piece.slug === slug)?.comments;
+
   return (
     <StyledSection>
-      <FavouriteButton slug={slug} onToggleFavourite={onToggleFavourite} isFavourite={isFavourite}/>
+      <FavouriteButton
+        slug={slug}
+        onToggleFavourite={onToggleFavourite}
+        isFavourite={isFavourite}
+      />
       <StyledImage
         src={image}
         alt={title}
@@ -33,6 +41,8 @@ export default function ArtPieceDetails({
           <br /> Genre: {genre}
         </p>
       </StyledDescription>
+      <CommentForm onSubmitComment={onSubmitComment} slug={slug} />
+      <p>{comments}</p>
     </StyledSection>
   );
 }
