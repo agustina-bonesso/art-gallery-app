@@ -1,7 +1,7 @@
 import ArtPiecePreview from "../ArtPiecePreview";
 import styled from "styled-components";
 
-export default function ArtPieces({ pieces }) {
+export default function ArtPieces({ pieces, onToggleFavourite }) {
   return (
     <>
       <StyledList>
@@ -13,6 +13,7 @@ export default function ArtPieces({ pieces }) {
                 title={piece.name}
                 artist={piece.artist}
                 slug={piece.slug}
+                onToggleFavourite={onToggleFavourite}
               ></ArtPiecePreview>
               <hr />
             </li>

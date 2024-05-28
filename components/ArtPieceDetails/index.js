@@ -1,9 +1,11 @@
 import Image from "next/image";
 import styled from "styled-components";
+import FavouriteButton from "../FavouriteButton";
 
-export default function ArtPieceDetails({ image, title, artist, year, genre }) {
+export default function ArtPieceDetails({ slug, image, title, artist, year, genre, onToggleFavourite }) {
   return (
     <StyledSection>
+      <FavouriteButton slug={slug} onToggleFavourite={onToggleFavourite}/>
       <StyledImage
         src={image}
         alt={title}
