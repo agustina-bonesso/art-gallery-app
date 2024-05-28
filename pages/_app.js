@@ -21,21 +21,39 @@ export default function App({ Component, pageProps }) {
     const isSaved = artPiecesInfo.find((piece) => piece.slug === slug);
 
     if (isSaved) {
-      //setArtPiecesInfo(artPiecesInfo.filter((piece) => piece != slug))
       const setUpPiece = artPiecesInfo.map((piece) => {
         if (piece.slug !== slug) {
           return piece;
         }
         return { ...piece, isFavourite: !piece.isFavourite };
       });
-      //setArtPiecesInfo(...slug);
       setArtPiecesInfo(setUpPiece);
     } else {
       const newPiece = { slug: slug, isFavourite: true };
       setArtPiecesInfo([newPiece, ...artPiecesInfo]);
     }
   }
- 
+
+  function handleSubmitComment(data) {
+    console.log(data);
+    const isSaved = artPiecesInfo.find((piece) => piece.slug === data.slug);
+    if (isSaved) {
+      const setUpComment = artPiecesInfo.map((piece) => {
+        if (piece.slug !== data.slug) {
+          return piece;
+        }
+        return { ...piece, comments: data.comment };
+      });
+      console.log(setUpComment);
+    } else {
+      const newPiece = {
+        slug: data.slug,
+        isFavourite: false,
+        comments: data.comment,
+      };
+      setArtPiecesInfo([newPiece, ...artPiecesInfo]);
+    }
+  }
 
   return (
     <>
@@ -46,6 +64,7 @@ export default function App({ Component, pageProps }) {
           pieces={data}
           artPiecesInfo={artPiecesInfo}
           onToggleFavourite={handleToggleFavourite}
+          onSubmitComment={handleSubmitComment}
         />
       </Layout>
     </>

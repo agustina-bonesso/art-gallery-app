@@ -6,6 +6,7 @@ export default function PieceDetail({
   pieces,
   onToggleFavourite,
   artPiecesInfo,
+  onSubmitComment,
 }) {
   const router = useRouter();
   const { slug } = router.query;
@@ -27,6 +28,7 @@ export default function PieceDetail({
         slug={piece.slug}
         onToggleFavourite={onToggleFavourite}
         artPiecesInfo={artPiecesInfo}
+        onSubmitComment={onSubmitComment}
       />
       <Link href="/art-pieces">Back to all pieces</Link>
     </>
