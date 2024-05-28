@@ -1,9 +1,11 @@
 import Image from "next/image";
 import styled from "styled-components";
+import FavouriteButton from "../FavouriteButton";
 
-export default function Spotlight({ image, artist, title }) {
+export default function Spotlight({ slug, image, artist, title, onToggleFavourite }) {
   return (
     <SpotlightSection>
+      <FavouriteButton onToggleFavourite={onToggleFavourite} slug={slug} />
       <StyledImage
         src={image}
         alt={title}

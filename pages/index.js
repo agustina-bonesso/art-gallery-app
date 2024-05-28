@@ -5,7 +5,7 @@ function randomArtPiece(pieces) {
   return pieces[randomIndex];
 }
 
-export default function SpotlightPage({ pieces }) {
+export default function SpotlightPage({ pieces, onToggleFavourite }) {
   const randomPiece = randomArtPiece(pieces);
 
   return (
@@ -15,6 +15,8 @@ export default function SpotlightPage({ pieces }) {
         image={randomPiece.imageSource}
         artist={randomPiece.artist}
         title={randomPiece.name}
+        slug={randomPiece.slug}
+        onToggleFavourite={onToggleFavourite}
       />
     </>
   );
