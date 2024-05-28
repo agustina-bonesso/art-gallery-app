@@ -1,16 +1,26 @@
 import ArtPieces from "@/components/ArtPieces";
 
-export default function FavouritePage({ pieces, artPieceInfo }) {
-  const favouritePieces = artPieceInfo
+export default function FavouritePage({
+  pieces,
+  artPiecesInfo,
+  onToggleFavourite,
+}) {
+  const favouritePieces = artPiecesInfo
     .filter((piece) => piece.isFavourite)
-    .map((piece) => piece.slug);
+    .map((piece) => {
+      return piece.slug;
+    });
 
-  const setUpPiece = pieces.map((piece) => {
-    if (piece.slug !== slug) {
-      return piece;
-    }
-    return { ...piece, isFavourite: !piece.isFavourite };
+  const favPiecesInfo = pieces.filter((piece) => {
+    return favouritePieces.includes(piece.slug);
   });
 
-  return <ArtPieces pieces={favouritePieces} />;
+  console.log("Art Pieces Info:" + artPiecesInfo);
+  console.log(pieces);
+  console.log(favouritePieces);
+  console.log(favPiecesInfo);
+
+  return (
+    <ArtPieces pieces={favPiecesInfo} onToggleFavourite={onToggleFavourite} />
+  );
 }
