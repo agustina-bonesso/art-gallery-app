@@ -14,8 +14,6 @@ export default function PieceDetail({
   const pieceIndex = pieces.findIndex((piece) => piece.slug === slug);
   const piece = pieces[pieceIndex];
 
-  console.log(pieceIndex);
-  console.log(piece);
 
   return (
     <>

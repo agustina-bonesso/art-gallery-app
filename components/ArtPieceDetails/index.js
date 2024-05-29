@@ -2,6 +2,8 @@ import Image from "next/image";
 import styled from "styled-components";
 import FavouriteButton from "../FavouriteButton";
 import CommentForm from "../CommentForm";
+import Comments from "../Comments";
+import { useState } from "react";
 
 export default function ArtPieceDetails({
   slug,
@@ -19,6 +21,11 @@ export default function ArtPieceDetails({
   )?.isFavourite;
 
   const comments = artPiecesInfo.find((piece) => piece.slug === slug)?.comments;
+
+  let displayState = "false";
+  if (comments) {
+    displayState = "true";
+  }
 
   return (
     <StyledSection>
@@ -42,7 +49,8 @@ export default function ArtPieceDetails({
         </p>
       </StyledDescription>
       <CommentForm onSubmitComment={onSubmitComment} slug={slug} />
-      <p>{comments}</p>
+      
+      {displayState === "true" && <Comments comments={comments} />}
     </StyledSection>
   );
 }

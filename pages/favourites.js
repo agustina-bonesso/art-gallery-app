@@ -15,10 +15,6 @@ export default function FavouritePage({
     return favouritePieces.includes(piece.slug);
   });
 
-  console.log("Art Pieces Info:" + artPiecesInfo);
-  console.log(pieces);
-  console.log(favouritePieces);
-  console.log(favPiecesInfo);
 
   return (
     <ArtPieces pieces={favPiecesInfo} onToggleFavourite={onToggleFavourite} artPiecesInfo={artPiecesInfo}/>

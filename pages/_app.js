@@ -35,21 +35,22 @@ export default function App({ Component, pageProps }) {
   }
 
   function handleSubmitComment(data) {
-    console.log(data);
     const isSaved = artPiecesInfo.find((piece) => piece.slug === data.slug);
     if (isSaved) {
       const setUpComment = artPiecesInfo.map((piece) => {
         if (piece.slug !== data.slug) {
           return piece;
         }
-        return { ...piece, comments: data.comment };
+        if (piece.comments) {
+          return { ...piece, comments: [piece.comments.push(data.comment)] };
+        }
+        return { ...piece, comments: [data.comment] };
       });
-      console.log(setUpComment);
     } else {
       const newPiece = {
         slug: data.slug,
         isFavourite: false,
-        comments: data.comment,
+        comments: [data.comment],
       };
       setArtPiecesInfo([newPiece, ...artPiecesInfo]);
     }
